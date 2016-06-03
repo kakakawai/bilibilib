@@ -54,13 +54,6 @@ Conment_Data ={
 
 #================================================
 Dynamic_Header = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0',
-    'Accept': '*/*',
-    'Accept-Language': 'zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3',
-    'Accept-Encoding': 'gzip, deflate',
-    'Cookie': 'pgv_pvi=9559737344; fts=1452313082; PLHistory=8eJ0%7ComCBZ; DedeID=3933618; uTZ=-480; loveplus=1; user_face=http%3A%2F%2Fstatic.hdslb.com%2Fimages%2Fmember%2Fnoface.gif; LIVE_BUVID=d237db3f309cfc0c1b759bfcc9612883; LIVE_BUVID__ckMd5=6979057eee2ea432; DedeUserID=9353541; DedeUserID__ckMd5=74df5d910dab6c83; SESSDATA=63e05447%2C1457792069%2C18f8de74; LIVE_LOGIN_DATA=139d2d42dc1c5ef14b431d5a4c22c1d3cc4cf006; LIVE_LOGIN_DATA__ckMd5=d667676404113142; _cnt_dyn=null; _cnt_pm=0; _cnt_notify=21; _dfcaptcha=73b9ffb3ab6549e052c6371f729b4fcf; rlc_time=1456237928841; sid=7r2u06a0; pgv_si=s3359137792',
-    'Connection': 'keep-alive'
-
 }
 #==============================================
 Dm_Header={
@@ -141,24 +134,7 @@ def addConment(av):
 
 #==================================================
 def getDynamic():
-    global Dynamic_Header
-    global null
-    global false
-    global true
-    
-    Dynamic_Req =requests.get(Dynamic_URL,headers=Dynamic_Header)
-    s = json.loads(json.dumps(eval(Dynamic_Req.text[41:-1])))
-#    print 'av' + str(s['data']['feeds'][0]['add_id']) +'||'+'up'+ str(s['data']['feeds'][0]['src_id'])
-#    print '#=================='
-#    print 'av' + str(s['data']['feeds'][1]['add_id']) +'||'+'up'+ str(s['data']['feeds'][1]['src_id'])
-#    print '#=================='
-#    print 'av' + str(s['data']['feeds'][2]['add_id']) +'||'+'up'+ str(s['data']['feeds'][2]['src_id'])
-
-    videoDict ={} #key:av,value:up
-    for num in range(3):
-        videoDict[str(s['data']['feeds'][num]['add_id'])] = str(s['data']['feeds'][num]['src_id'])
-
-    return videoDict
+        pass
 
 def getUpDynamic(up):#返回单元素字典，key：av，value：title
     global upDynamic_Header
@@ -190,8 +166,8 @@ def getOneDynamic(up):
         return {av:title}
 #===============================================================================
 def SendDm():
-        Dm_Req =requests.post(Dm_URL,data=Dm_Data,headers=Dm_Header)#Header)#
-        print Dm_Req.text
+#        Dm_Req =requests.post(Dm_URL,data=Dm_Data,headers=Dm_Header)#Header)#
+#        print Dm_Req.text
 
 if __name__ == '__main__':
         pass
